@@ -1,0 +1,81 @@
+#include "stdlib.h"
+#include "signal.h"
+#include <ncurses.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int pid;
+    char choice;
+    int i = 0, j = 0;
+    int work = 1;
+    std::vector<pid_t> vc;
+    vector<pid_t>::const_iterator iter;
+    pid_t last;
+    pid_t ms[10];
+    int del = 0;
+    while(true)
+    {
+        start:
+        printf("\n '+' - add\n '-' - del\n 'q' - quit\n");
+        std::cin >> choice;
+       // getch();
+       
+        switch (choice)
+        {
+        case '+':
+         {
+            pid = fork();
+             vc.push_back(getpid());
+             ms[i] = getpid();
+           // vc.push_back(getpid());
+            switch (pid)
+            {
+            case -1:
+                printf("Can't create fork =(\n PID is %d\n", getpid());
+                break;
+            case 0:
+               //vc.push_back(getpid());
+               
+               while(1){
+              //     printf("\n==========\n");
+                for(iter = vc.begin(); iter != vc.end(); ++iter)
+                {
+                    cout << *iter << endl;   
+                }
+                // printf("==========\n");
+                sleep(4);                
+               }
+               default:
+               i++;
+               goto start;
+                
+            }
+            }     
+
+            ///////////////
+        case '-':
+           
+            //iter = vc.end();
+            kill(ms[i], SIGSTOP);
+            //vc.pop_back();
+            i--;
+            goto start;
+            //raise(SIGKILL);      
+        case 'q':
+            return 0 ;
+        default:
+            cout << "Bad Ch" << endl;
+            goto start;
+        }
+    }  
+    printf("\nEnd.\n");
+    return 0;
+}
