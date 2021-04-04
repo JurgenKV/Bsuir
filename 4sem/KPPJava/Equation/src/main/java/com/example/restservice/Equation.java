@@ -2,12 +2,12 @@ package com.example.restservice;
 
 public class Equation
 {
-    private double a;
-    private double b;
-    private int n;
+    private Integer a;
+    private Integer b;
+    private Integer n;
     private String result;
 
-    public Equation(double a, double b, int n, String result)
+    public Equation(int a, int b, int n, String result)
     {
         this.a = a;
         this.b = b;
@@ -38,7 +38,6 @@ public class Equation
     }
     public String getRes ()
     {
-        // Scanner in = new Scanner(System.in);
         int n; double a,b,dy,In,y=0;
         a = getA();
         b = getB();
@@ -54,5 +53,12 @@ public class Equation
         else
             return "Error";
     }
+
+   /* public class IncorrectFileExtensionException
+            extends RuntimeException {
+        public IncorrectFileExtensionException(String errorMessage, Throwable err) {
+            super(errorMessage, err);
+        }
+    }*/
 }
 ///////////////////////
