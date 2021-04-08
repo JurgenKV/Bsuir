@@ -2,7 +2,9 @@ com/example/restservice/RestServiceApplication.java
  com.example.restservice.RestServiceApplication
 com/example/restservice/Exception.java
  com.example.restservice.Exception
-com/example/restservice/Equation.java
- com.example.restservice.Equation
+com/example/restservice/CacheMap.java
+ com.example.restservice.CacheMap
 com/example/restservice/Controller.java
  com.example.restservice.Controller
+com/example/restservice/Equation.java
+ com.example.restservice.Equation
