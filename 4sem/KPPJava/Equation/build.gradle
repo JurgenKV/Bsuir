@@ -17,8 +17,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.14.1'
 }
 
 test {
 	useJUnitPlatform()
 }
+
+

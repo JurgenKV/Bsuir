@@ -1,22 +1,19 @@
 package com.example.restservice;
 
-import java.lang.Double;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.thymeleaf.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import java.util.HashMap;
 
 @RestController
 public class Controller {
     @Autowired
     private final CacheMap cacheMap;
+  //  @Autowired
+    //Semaphor sema;
 
     public Controller(CacheMap cacheMap) {
         this.cacheMap = cacheMap;
@@ -27,7 +24,9 @@ public class Controller {
                      @RequestParam(value = "b", defaultValue = "2") String b,
                      @RequestParam(value = "n", defaultValue = "1") String n,
                      String result) throws InterruptedException {
-        // 500
+
+        Semaphor.sem.release();
+        //////////////////////////////////////// 500
     /*  Integer a1 = Integer.parseInt(a);
         Integer b1 = Integer.parseInt(b);
         Integer n1 = Integer.parseInt(n);
@@ -43,7 +42,7 @@ public class Controller {
                 Integer b1 = Integer.parseInt(b);
                 Integer n1 = Integer.parseInt(n);
                 Equation equal = new Equation(a1, b1, n1);
-                Thread.sleep(1000 * 3);
+                //  Thread.sleep(1000 * 3);
                 cacheMap.insert(id, equal.getRes());
 
                 return equal.getResult();
