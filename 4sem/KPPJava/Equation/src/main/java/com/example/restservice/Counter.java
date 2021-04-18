@@ -21,12 +21,12 @@ public class Counter extends Thread {
     Integer count = 0;
     Boolean countTrue = true;
   //  Semaphor sema;
-
+/*
     @GetMapping("/equation/count")
     public Integer eq() throws InterruptedException {
         return getCounter();
     }
-
+*/
     Counter() {
        // super();
         start();

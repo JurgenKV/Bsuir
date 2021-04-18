@@ -20,6 +20,11 @@ public class Equation {
     private Integer b;
     private Integer n;
     public String result;
+    private String key;
+
+    private String maxRes;
+    private String minRes;
+    private String avgRes;
 
     public Equation() {
     }
@@ -28,10 +33,10 @@ public class Equation {
         this.a = a;
         this.b = b;
         this.n = n;
-        //  if(result.equals(null) || result.equals(""))
+
         this.result = getRes();
-        //else
-        //  this.result = result;
+        this.key = getKeyEq();
+
     }
 
     public Integer getA() {
@@ -44,6 +49,10 @@ public class Equation {
 
     public Integer getN() {
         return n;
+    }
+    public String getKeyEq(){
+        String id = a.toString() + b.toString() + n.toString();
+        return id;
     }
 
     public String getResult() {
@@ -61,6 +70,31 @@ public class Equation {
     public Integer setN(Integer n) {
         return this.n = n;
     }
+
+    public String setMax(String max) {
+        return this.maxRes = max;
+    }
+
+    public String setMin(String min) {
+        return this.minRes = min;
+    }
+
+    public String setAvg(String avg) {
+        return this.avgRes = avg;
+    }
+
+    public String getMax() {
+        return this.maxRes;
+    }
+
+    public String getMin() {
+        return this.minRes;
+    }
+
+    public String getAvg() {
+        return this.avgRes;
+    }
+
 
     public String setResual(String res) {
         return this.result = res;
