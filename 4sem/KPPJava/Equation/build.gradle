@@ -18,7 +18,14 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.14.1'
+	compile ('org.apache.poi:poi:3.12')
+	compile( 'org.apache.poi:poi-ooxml:3.12')
+	compile ('com.fasterxml:aalto-xml:1.0.0')
+	compile files('libs/poi-3.12-20150511.jar')
+	compile files('libs/poi-ooxml-3.12-20150511.jar')
 }
+
+
 
 test {
 	useJUnitPlatform()

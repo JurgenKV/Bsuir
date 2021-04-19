@@ -24,19 +24,19 @@ public class CacheMap {
     }
 
     boolean isStored(List<String> id) {
-    for(int i = 0; i < id.size(); i++) {
-        String idKey = id.get(i);
-        if(CacheMap.containsKey(idKey)){
-            return true;
+        for (int i = 0; i < id.size(); i++) {
+            String idKey = id.get(i);
+            if (CacheMap.containsKey(idKey)) {
+                return true;
+            }
         }
-    }
-    return false;
-       // return CacheMap.containsKey(idKey);
+        return false;
+        // return CacheMap.containsKey(idKey);
     }
 
     boolean isStored(Equation id) {
-            String idKey = id.getKeyEq();
-           return CacheMap.containsKey(idKey);
+        String idKey = id.getKeyEq();
+        return CacheMap.containsKey(idKey);
         // return CacheMap.containsKey(idKey);
     }
 

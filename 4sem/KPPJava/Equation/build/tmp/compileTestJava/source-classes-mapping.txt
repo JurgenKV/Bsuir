@@ -1,4 +1,4 @@
-com/example/restservice/GreetingControllerTests.java
- com.example.restservice.GreetingTest
 com/example/restservice/Testy.java
  com.example.restservice.GreetingControllerTests
+com/example/restservice/GreetingControllerTests.java
+ com.example.restservice.GreetingTest

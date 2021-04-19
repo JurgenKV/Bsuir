@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CountController {
-   // @Autowired
+     @Autowired
     Counter count;
+
     @GetMapping("/equation/count")
     public Integer eq() throws InterruptedException {
         return count.getCounter();

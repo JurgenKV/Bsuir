@@ -1,15 +1,7 @@
 package com.example.restservice;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import java.util.LinkedList;
-
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 
 //@Component
@@ -19,12 +11,8 @@ public class Equation {
     private Integer a;
     private Integer b;
     private Integer n;
-    public String result;
     private String key;
-
-    private String maxRes;
-    private String minRes;
-    private String avgRes;
+    public String result;
 
     public Equation() {
     }
@@ -50,7 +38,8 @@ public class Equation {
     public Integer getN() {
         return n;
     }
-    public String getKeyEq(){
+
+    public String getKeyEq() {
         String id = a.toString() + b.toString() + n.toString();
         return id;
     }
@@ -71,37 +60,12 @@ public class Equation {
         return this.n = n;
     }
 
-    public String setMax(String max) {
-        return this.maxRes = max;
-    }
-
-    public String setMin(String min) {
-        return this.minRes = min;
-    }
-
-    public String setAvg(String avg) {
-        return this.avgRes = avg;
-    }
-
-    public String getMax() {
-        return this.maxRes;
-    }
-
-    public String getMin() {
-        return this.minRes;
-    }
-
-    public String getAvg() {
-        return this.avgRes;
-    }
-
 
     public String setResual(String res) {
         return this.result = res;
     }
 
-    public String getterRes()
-    {
+    public String getterRes() {
         return result;
     }
 
