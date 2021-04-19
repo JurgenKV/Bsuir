@@ -1,46 +1,73 @@
 package com.example.restservice;
 
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.log4j.Logger;
-import org.springframework.web.servlet.view.document.AbstractXlsView;
+import org.apache.poi.ss.usermodel.Row;
 
-public class ExcelReportView extends AbstractXlsView{
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-    @Override
-    protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request,
-                                      HttpServletResponse response) throws Exception {
+public class ExcelReportView {
+    public static List<Equation> list;
 
-        response.setHeader("Content-Disposition", "attachment;filename=\"EquationTable.xls\"");
-        List<Equation> equationList = (List<Equation>) model.get("equationList");
-        Sheet sheet = workbook.createSheet("Integral sq");
-        Row header = sheet.createRow(0);
-        header.createCell(0).setCellValue("A");
-        header.createCell(1).setCellValue("B");
-        header.createCell(2).setCellValue("N");
-        header.createCell(3).setCellValue("res");
+    ExcelReportView(List<Equation> l) throws ParseException {
+        this.list = l;
+        doExel(list);
+    }
 
-        int rowNum = 1;
-        for(Equation Eq:equationList){
-            Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(Eq.getA());
-            row.createCell(1).setCellValue(Eq.getB());
-            row.createCell(2).setCellValue(Eq.getN());
-            row.createCell(3).setCellValue(Eq.getResult());
-            System.out.println("========================================");
+    ;
+
+    public static void doExel(List<Equation> li) throws ParseException {
+        Logger log;
+        log = Logger.getLogger(Controller.class.getName());
+
+        HSSFWorkbook workbook = new HSSFWorkbook();
+
+        HSSFSheet sheet = workbook.createSheet("Common List");
+
+        List<Equation> dataList = li;
+
+        // счетчик для строк
+        int rowNum = 0;
+
+        // создаем подписи к столбцам (это будет первая строчка в листе Excel файла)
+        Row row = sheet.createRow(rowNum);
+        row.createCell(0).setCellValue("ID");
+        row.createCell(1).setCellValue("A");
+        row.createCell(2).setCellValue("B");
+        row.createCell(3).setCellValue("N");
+        row.createCell(4).setCellValue("Result");
+
+        // заполняем лист данными
+        for (Equation dataModel : dataList) {
+            createSheetHeader(sheet, ++rowNum, dataModel);
         }
 
+        // запись в док
+        try (FileOutputStream out = new FileOutputStream(new File("d:\\Study\\Programming\\Java\\Equation\\File.xls"))) {
+            workbook.write(out);
+            log.log(Level.INFO, "Excel файл создан, все ок =) !");
+        } catch (IOException e) {
+            log.log(Level.WARNING, "Закройте файл и попробуйте снова");
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void createSheetHeader(HSSFSheet sheet, int rowNum, Equation dataModel) {
+        Row row = sheet.createRow(rowNum);
+
+        row.createCell(0).setCellValue(dataModel.getKeyEq());
+        row.createCell(1).setCellValue(dataModel.getA());
+        row.createCell(2).setCellValue(dataModel.getB());
+        row.createCell(3).setCellValue(dataModel.getN());
+        row.createCell(4).setCellValue(dataModel.getResult());
     }
 }
 

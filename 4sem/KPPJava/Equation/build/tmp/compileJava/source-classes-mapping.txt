@@ -10,13 +10,13 @@ com/example/restservice/Semaphor.java
  com.example.restservice.Semaphor
 com/example/restservice/Exception.java
  com.example.restservice.Exception
-com/example/restservice/ExcelReportView.java
- com.example.restservice.ExcelReportView
 com/example/restservice/MathLab.java
  com.example.restservice.MathLab
-com/example/restservice/Controller.java
- com.example.restservice.Controller
-com/example/restservice/Equation.java
- com.example.restservice.Equation
 com/example/restservice/Counter.java
  com.example.restservice.Counter
+com/example/restservice/Equation.java
+ com.example.restservice.Equation
+com/example/restservice/Controller.java
+ com.example.restservice.Controller
+com/example/restservice/ExcelReportView.java
+ com.example.restservice.ExcelReportView

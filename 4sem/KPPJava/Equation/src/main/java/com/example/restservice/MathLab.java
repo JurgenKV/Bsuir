@@ -28,7 +28,6 @@ public class MathLab {
         this.maxA = maxa;
     }
 
-
     public String setMax(String max) {
         return this.maxRes = max;
     }

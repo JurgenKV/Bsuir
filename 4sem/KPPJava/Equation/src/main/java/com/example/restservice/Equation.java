@@ -15,16 +15,15 @@ public class Equation {
     public String result;
 
     public Equation() {
+
     }
 
     public Equation(int a, int b, int n) {
         this.a = a;
         this.b = b;
         this.n = n;
-
         this.result = getRes();
         this.key = getKeyEq();
-
     }
 
     public Integer getA() {

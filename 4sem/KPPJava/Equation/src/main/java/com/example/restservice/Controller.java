@@ -1,6 +1,7 @@
 package com.example.restservice;
 
 import org.apache.poi.ss.formula.functions.T;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -8,12 +9,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.util.ListUtils;
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+import org.apache.logging.log4j.LogManager;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.ParseException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+
+import static org.apache.log4j.Level.INFO;
 
 @Component
 @RestController
@@ -32,7 +47,7 @@ public class Controller {
     public List<Equation> eq(@RequestParam(value = "a", defaultValue = "1") List<String> a,
                              @RequestParam(value = "b", defaultValue = "2") List<String> b,
                              @RequestParam(value = "n", defaultValue = "1") List<String> n,
-                             ArrayList<Equation> result) throws InterruptedException {
+                             ArrayList<Equation> result) throws InterruptedException, ParseException {
         // System.out.println(result);
         List<Equation> myList = new ArrayList<Equation>();
 
@@ -66,14 +81,9 @@ public class Controller {
 
 
         // min / max / avg / maxA
-
-
         Comparator<Equation> comparatorMax = Comparator.comparing(Equation::getResult);
         Comparator<Equation> comparatorMin = Comparator.comparing(Equation::getResult);
-        Comparator<Equation> comparatorAvg = Comparator.comparing(Equation::getKeyEq);
         Comparator<Equation> comparatorMaxA = Comparator.comparing(Equation::getA);
-
-
 
         Equation minObject = resList.stream().min(comparatorMin).get();
         Equation maxObject = resList.stream().max(comparatorMax).get();
@@ -85,23 +95,26 @@ public class Controller {
         math.setAvg(Double.toString(avgObject));
         math.setMaxA(maxAObj.result);
 
-        System.out.println("maxObject = " + maxObject.result);
+      /*  System.out.println("maxObject = " + maxObject.result);
         System.out.println("minObject = " + minObject.result);
         System.out.println("AVG = " + avgObject);
-        System.out.println("maxAObj = " + maxAObj.result);
+        System.out.println("maxAObj = " + maxAObj.result);*/
+        LOGGER.log(INFO, "min/max/avg/maxA вычислены");
 
      /*   public ModelAndView getExcel() {
             new ModelAndView(new ExcelReportView(), "equationList", resList);
         }*/
-        getExcel(resList);
+        //Делаем Excel file
+        ExcelReportView d = new ExcelReportView(resList);
+      //  getExcel(resList);
         return resList;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
+  /*  @RequestMapping(method=RequestMethod.GET)
     public ModelAndView getExcel(List<Equation> L){
         System.out.println("adasdasdas");
         return new ModelAndView(new ExcelReportView(), "equationList", L);
-    }
+    }*/
 /*
 
    public class ReportController {
