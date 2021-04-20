@@ -1,10 +1,8 @@
 package com.example.restservice;
 
-
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,29 +12,25 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+public class ExcelReportViewIdAsync {
+    public static List<String> list;
 
-public class ExcelReportView {
-
-    //@Autowired
-
-    public static List<Equation> list;
-
-    ExcelReportView(List<Equation> l) throws ParseException {
+    ExcelReportViewIdAsync(List<String> l) throws ParseException {
         this.list = l;
         doExel(list);
     }
 
     ;
 
-    public static void doExel(List<Equation> li) throws ParseException {
+    public static void doExel(List<String> li) throws ParseException {
         Logger log;
         log = Logger.getLogger(Controller.class.getName());
-        ExlsFile myFile;
+
         HSSFWorkbook workbook = new HSSFWorkbook();
 
         HSSFSheet sheet = workbook.createSheet("Common List");
 
-        List<Equation> dataList = li;
+        List<String> dataList = li;
 
         // счетчик для строк
         int rowNum = 0;
@@ -44,13 +38,9 @@ public class ExcelReportView {
         // создаем подписи к столбцам (это будет первая строчка в листе Excel файла)
         Row row = sheet.createRow(rowNum);
         row.createCell(0).setCellValue("ID");
-        row.createCell(1).setCellValue("A");
-        row.createCell(2).setCellValue("B");
-        row.createCell(3).setCellValue("N");
-        row.createCell(4).setCellValue("Result");
 
         // заполняем лист данными
-        for (Equation dataModel : dataList) {
+        for (String dataModel : dataList) {
             createSheetHeader(sheet, ++rowNum, dataModel);
         }
 
@@ -65,14 +55,9 @@ public class ExcelReportView {
 
     }
 
-    private static void createSheetHeader(HSSFSheet sheet, int rowNum, Equation dataModel) {
+    private static void createSheetHeader(HSSFSheet sheet, int rowNum, String dataModel) {
         Row row = sheet.createRow(rowNum);
-
-        row.createCell(0).setCellValue(dataModel.getKeyEq());
-        row.createCell(1).setCellValue(dataModel.getA());
-        row.createCell(2).setCellValue(dataModel.getB());
-        row.createCell(3).setCellValue(dataModel.getN());
-        row.createCell(4).setCellValue(dataModel.getResult());
+        row.createCell(0).setCellValue(dataModel);
     }
 }
 

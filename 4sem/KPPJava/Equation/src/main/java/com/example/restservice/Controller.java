@@ -1,32 +1,18 @@
 package com.example.restservice;
 
-import org.apache.poi.ss.formula.functions.T;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.util.ListUtils;
 import org.apache.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
-import org.apache.logging.log4j.LogManager;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.*;
-import java.util.logging.Level;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFColor;
 
 import static org.apache.log4j.Level.INFO;
 
@@ -43,13 +29,33 @@ public class Controller {
         this.cacheMap = cacheMap;
     }
 
+
+    /*@Async
+    public Future<Equation> execute(Equation eq) {
+        return new AsyncResult<Equation>(eq);
+    }*/
+
     @GetMapping("/equation")
     public List<Equation> eq(@RequestParam(value = "a", defaultValue = "1") List<String> a,
                              @RequestParam(value = "b", defaultValue = "2") List<String> b,
                              @RequestParam(value = "n", defaultValue = "1") List<String> n,
                              ArrayList<Equation> result) throws InterruptedException, ParseException {
         // System.out.println(result);
+
+        CompletableFuture.runAsync(() -> {
+            List<String> myListId = ObjEqListId(a,b,n);
+            try {
+                ExcelReportViewIdAsync d = new ExcelReportViewIdAsync(myListId);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            //       ExcelReportView f = new ExcelReportView();
+
+        });
+
+        Thread.sleep(10000);
         List<Equation> myList = new ArrayList<Equation>();
+
 
         Semaphor.sem.release();
         //////////////////////////////////////// 500
@@ -105,29 +111,10 @@ public class Controller {
             new ModelAndView(new ExcelReportView(), "equationList", resList);
         }*/
         //Делаем Excel file
-        ExcelReportView d = new ExcelReportView(resList);
-      //  getExcel(resList);
+        ExcelReportView f = new ExcelReportView(resList);
+        //  getExcel(resList);
         return resList;
     }
-
-  /*  @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView getExcel(List<Equation> L){
-        System.out.println("adasdasdas");
-        return new ModelAndView(new ExcelReportView(), "equationList", L);
-    }*/
-/*
-
-   public class ReportController {
-        @Autowired
-        List<Equation> resList;
-        @RequestMapping(method= RequestMethod.GET)
-
-        public ModelAndView getExcel(){
-
-            return new ModelAndView(new ExcelReportView(), "equationList", resList);
-        }
-    }
-*/
 
 
     public static boolean isNumeric(String str) {
@@ -143,8 +130,7 @@ public class Controller {
         List<Equation> listEq = new ArrayList<Equation>();
 
 
-
-        if(a.size() == b.size() && b.size() == n.size()) {
+        if (a.size() == b.size() && b.size() == n.size()) {
 
             for (int i = 0; i < a.size(); i++) {
 
@@ -167,36 +153,36 @@ public class Controller {
             }
 
             return listEq;
-        }else
-        {
+        } else {
             throw new Exception();
         }
     }
 
-/*
-    public static Equation ObjEqList(Equation ser) {
+    public static List<String> ObjEqListId(List<String> a, List<String> b, List<String> n) {
 
-        Logger LOGGER;
-        LOGGER = Logger.getLogger(Controller.class.getName());
+        List<String> listEqId = new ArrayList<String>();
 
-        String numA = ser.getA().toString();
-        String numB = ser.getB().toString();
-        String numN = ser.getN().toString();
+        if (a.size() == b.size() && b.size() == n.size()) {
 
-        if (isNumeric(numA) && isNumeric(numB) && isNumeric(numN)) {
-            LOGGER.log(Level.INFO, "Прошло валидацию =)");
-            Integer a1 = Integer.parseInt(numA);
-            Integer b1 = Integer.parseInt(numB);
-            Integer n1 = Integer.parseInt(numN);
+            for (int i = 0; i < a.size(); i++) {
 
-            Equation equal = new Equation(a1, b1, n1);
-            return equal;
-            //  listEq.add(equal);
+                String numA = a.get(i);
+                String numB = b.get(i);
+                String numN = n.get(i);
+                if (isNumeric(numA) && isNumeric(numB) && isNumeric(numN)) {
+                    String id = numA + numB + numN;
+                    listEqId.add(id);
+                } else {
+                    Logger.getLogger("Не прошло валидацию =(");
+                    throw new Exception();
+                }
+            }
         } else {
-            LOGGER.log(Level.WARNING, "Не прошло валидацию =(");
             throw new Exception();
         }
-    }*/
+
+        return listEqId;
+    }
 
     private static String doListId(String a, String b, String n) {
         String id = a + b + n;
@@ -229,4 +215,48 @@ class ReportController {
 */
 
 
+/*
+    public static Equation ObjEqList(Equation ser) {
+
+        Logger LOGGER;
+        LOGGER = Logger.getLogger(Controller.class.getName());
+
+        String numA = ser.getA().toString();
+        String numB = ser.getB().toString();
+        String numN = ser.getN().toString();
+
+        if (isNumeric(numA) && isNumeric(numB) && isNumeric(numN)) {
+            LOGGER.log(Level.INFO, "Прошло валидацию =)");
+            Integer a1 = Integer.parseInt(numA);
+            Integer b1 = Integer.parseInt(numB);
+            Integer n1 = Integer.parseInt(numN);
+
+            Equation equal = new Equation(a1, b1, n1);
+            return equal;
+            //  listEq.add(equal);
+        } else {
+            LOGGER.log(Level.WARNING, "Не прошло валидацию =(");
+            throw new Exception();
+        }
+    }*/
+
+
+  /*  @RequestMapping(method=RequestMethod.GET)
+    public ModelAndView getExcel(List<Equation> L){
+        System.out.println("adasdasdas");
+        return new ModelAndView(new ExcelReportView(), "equationList", L);
+    }*/
+/*
+
+   public class ReportController {
+        @Autowired
+        List<Equation> resList;
+        @RequestMapping(method= RequestMethod.GET)
+
+        public ModelAndView getExcel(){
+
+            return new ModelAndView(new ExcelReportView(), "equationList", resList);
+        }
+    }
+*/
 
