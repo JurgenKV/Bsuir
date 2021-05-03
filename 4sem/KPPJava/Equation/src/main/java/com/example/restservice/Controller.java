@@ -1,8 +1,5 @@
 package com.example.restservice;
 
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +8,6 @@ import org.apache.log4j.Logger;
 import java.text.ParseException;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 import static org.apache.log4j.Level.INFO;
@@ -29,12 +25,6 @@ public class Controller {
         this.cacheMap = cacheMap;
     }
 
-
-    /*@Async
-    public Future<Equation> execute(Equation eq) {
-        return new AsyncResult<Equation>(eq);
-    }*/
-
     @GetMapping("/equation")
     public List<Equation> eq(@RequestParam(value = "a", defaultValue = "1") List<String> a,
                              @RequestParam(value = "b", defaultValue = "2") List<String> b,
@@ -43,7 +33,7 @@ public class Controller {
         // System.out.println(result);
 
         CompletableFuture.runAsync(() -> {
-            List<String> myListId = ObjEqListId(a,b,n);
+            List<String> myListId = ObjEqListId(a, b, n);
             try {
                 ExcelReportViewIdAsync d = new ExcelReportViewIdAsync(myListId);
             } catch (ParseException e) {
@@ -67,7 +57,6 @@ public class Controller {
         LOGGER = Logger.getLogger(Controller.class.getName());
         myList = ObjEqListFirst(a, b, n);
         List<Equation> resList = new ArrayList<Equation>();
-
 
         resList.addAll(myList.stream()
                 .parallel()
@@ -101,10 +90,11 @@ public class Controller {
         math.setAvg(Double.toString(avgObject));
         math.setMaxA(maxAObj.result);
 
-      /*  System.out.println("maxObject = " + maxObject.result);
+        System.out.println("maxObject = " + maxObject.result);
         System.out.println("minObject = " + minObject.result);
         System.out.println("AVG = " + avgObject);
-        System.out.println("maxAObj = " + maxAObj.result);*/
+        System.out.println("maxAObj = " + maxAObj.result);
+
         LOGGER.log(INFO, "min/max/avg/maxA вычислены");
 
      /*   public ModelAndView getExcel() {
@@ -196,67 +186,4 @@ public class Controller {
         return idList;
     }
 
-
 }
-
-
-/*
-@RequestMapping("/report")
-class ReportController {
-    @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView getExcel(){
-        System.out.println("Хоба");
-        List<Equation> studentList = new ArrayList<Equation>();
-        studentList.add(new Equation(2, 3, 4));
-        studentList.add(new Equation(5, 6, 7));
-        return new ModelAndView(new ExcelReportView(), "equationList", studentList);
-    }
-}
-*/
-
-
-/*
-    public static Equation ObjEqList(Equation ser) {
-
-        Logger LOGGER;
-        LOGGER = Logger.getLogger(Controller.class.getName());
-
-        String numA = ser.getA().toString();
-        String numB = ser.getB().toString();
-        String numN = ser.getN().toString();
-
-        if (isNumeric(numA) && isNumeric(numB) && isNumeric(numN)) {
-            LOGGER.log(Level.INFO, "Прошло валидацию =)");
-            Integer a1 = Integer.parseInt(numA);
-            Integer b1 = Integer.parseInt(numB);
-            Integer n1 = Integer.parseInt(numN);
-
-            Equation equal = new Equation(a1, b1, n1);
-            return equal;
-            //  listEq.add(equal);
-        } else {
-            LOGGER.log(Level.WARNING, "Не прошло валидацию =(");
-            throw new Exception();
-        }
-    }*/
-
-
-  /*  @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView getExcel(List<Equation> L){
-        System.out.println("adasdasdas");
-        return new ModelAndView(new ExcelReportView(), "equationList", L);
-    }*/
-/*
-
-   public class ReportController {
-        @Autowired
-        List<Equation> resList;
-        @RequestMapping(method= RequestMethod.GET)
-
-        public ModelAndView getExcel(){
-
-            return new ModelAndView(new ExcelReportView(), "equationList", resList);
-        }
-    }
-*/
-

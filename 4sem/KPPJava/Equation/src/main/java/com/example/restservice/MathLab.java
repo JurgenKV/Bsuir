@@ -19,8 +19,6 @@ public class MathLab {
         maxA = "Incorrect data\n";
     }
 
-    ;
-
     MathLab(String a, String b, String c, String maxa) {
         this.maxRes = a;
         this.minRes = b;

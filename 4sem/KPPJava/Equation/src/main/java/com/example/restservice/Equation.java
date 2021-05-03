@@ -3,9 +3,6 @@ package com.example.restservice;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-
-//@Component
-//@Service
 public class Equation {
 
     private Integer a;
@@ -15,7 +12,6 @@ public class Equation {
     public String result;
 
     public Equation() {
-
     }
 
     public Equation(int a, int b, int n) {
@@ -100,31 +96,3 @@ public class Equation {
         }
     }
 }
-
-/*@Configuration
-@ComponentScan(basePackageClasses = Equation.class)
-class CalculationResults {
-
-    *//*  public CalculationResults(int a, int b, int n, String result) {
-          super(a, b, n, result);
-      }*//*
-    private Integer a;
-    private Integer b;
-    private Integer n;
-    private String result;
-
-    public CalculationResults(int a, int b, int n, String result) {
-        Map<Integer, Equation> data = new HashMap<Integer, Equation>();
-
-
-      this.a =a;
-      this.b =b;
-      this.n =n;
-      this.result = result;
-              data.put("1", Equation());
-
-    }
-}*/
-
-
-///////////////////////

@@ -20,8 +20,6 @@ public class ExcelReportViewIdAsync {
         doExel(list);
     }
 
-    ;
-
     public static void doExel(List<String> li) throws ParseException {
         Logger log;
         log = Logger.getLogger(Controller.class.getName());
