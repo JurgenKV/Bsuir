@@ -1,0 +1,42 @@
+#include <Keypad.h>
+
+
+#include <SoftwareSerial.h>
+
+#define  blueth_RX 0
+#define  blueth_TX 1
+const int PIN_BUTTON = 2;
+const int PIN_BUTTON2 = 3;
+
+SoftwareSerial mySerial (blueth_TX, blueth_RX);
+
+const byte ROWS = 4; //число строк у нашей клавиатуры
+const byte COLS = 4; //число столбцов у нашей клавиатуры
+char hexaKeys[ROWS][COLS] = {// здесь мы располагаем названия наших клавиш, как на клавиатуре,для удобства пользования
+{'A','B','C','D'}, 
+{'E','F','G','H'},
+{'I','J','K','L'},
+{'M','N','O','P'}
+};
+
+byte colPins[COLS] = {9, 10, 11, 12}; //к каким выводам подключаем управление строками
+byte  rowPins[ROWS] = {5, 6, 7, 8}; //к каким выводам подключаем управление столбцами
+
+Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
+
+void setup() {
+  mySerial.begin(9600);
+}
+
+void loop() {
+  char customKey = customKeypad.getKey();//записывем нажатый символ
+
+if (customKey){//если что-то нажато
+  Serial.println(customKey); //выводим нажатый символ в монитор порта
+    mySerial.println(customKey);
+ }
+ 
+  int buttonState = digitalRead(PIN_BUTTON);
+  int buttonStateTwo = digitalRead(PIN_BUTTON2);
+
+}

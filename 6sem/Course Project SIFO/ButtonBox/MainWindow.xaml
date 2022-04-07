@@ -1,0 +1,35 @@
+﻿<Window x:Class="ButtonBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ButtonBox"
+        mc:Ignorable="d"
+        Title="ButtonBox" Height="450" Width="290">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="labelPortChoice" Content="" HorizontalAlignment="Left" Margin="0,383,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="10"/>
+        <Label x:Name="label1" Content="Control Functions" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="118"/>
+        <ComboBox x:Name="comboBoxPortsList" HorizontalAlignment="Left" Margin="22,383,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1" Height="22"/>
+        <Button x:Name="buttonInitPort" Content="Init" Margin="177,383,0,0" VerticalAlignment="Top" Click="ButtonInitPort_Click" Height="22" HorizontalAlignment="Left" Width="83" Grid.Column="1"/>
+        <Button x:Name="buttonMuteMicro" Grid.ColumnSpan="2" Content="Mute Micro" HorizontalAlignment="Left" Margin="22,41,0,0" VerticalAlignment="Top" Width="90" Click="buttonMuteMicro_Click"/>
+        <Button x:Name="buttonCloseWOpenTM" Grid.ColumnSpan="2" Content="Mini TM" HorizontalAlignment="Right" Margin="0,41,22,0" VerticalAlignment="Top" Width="98" Click="buttonCloseWOpenTM_Click"/>
+        <Button x:Name="buttonMuteSystem" Grid.ColumnSpan="2" Content="Mute System" HorizontalAlignment="Left" Margin="22,76,0,0" VerticalAlignment="Top" Width="90" Click="buttonMuteSystem_Click"/>
+        <Button x:Name="buttonChangeOutput" Grid.ColumnSpan="2" Content="Change Output" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top" Width="90" Click="buttonChangeOutput_Click"/>
+        <ComboBox x:Name="comboBoxFastOpenAppList" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="22,254,0,0" VerticalAlignment="Top" Width="130" SelectionChanged="comboBoxFastOpenAppList_SelectionChanged"/>
+        <Button x:Name="buttonBindFastOpen" Grid.ColumnSpan="2" Content="Bind" HorizontalAlignment="Left" Margin="177,253,0,0" VerticalAlignment="Top" Width="83" Height="23" Click="buttonBindFastOpen_Click"/>
+        <TextBox x:Name="textBoxpathFastOpen" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="238" AllowDrop="True" />
+        <Button x:Name="buttonDoSleepMode" Grid.ColumnSpan="2" Content="Sleep PC" Margin="0,76,22,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98" Click="buttonDoSleepMode_Click"/>
+        <Button x:Name="buttonOffPc" Grid.ColumnSpan="2" Content="Off PC" Margin="0,111,22,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="98" Click="buttonOffPc_Click"/>
+        <Button x:Name="button6" Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Left" Margin="22,147,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="button7" Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Right" Margin="0,147,22,0" VerticalAlignment="Top" Width="98"/>
+        <Label x:Name="label" Grid.ColumnSpan="2" Content="Quick start binds" HorizontalAlignment="Left" Margin="22,195,0,0" VerticalAlignment="Top" Width="102"/>
+        <CheckBox x:Name="checkBox" Grid.ColumnSpan="2" Content="Autorun ButtonBox" HorizontalAlignment="Left" Margin="22,350,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked"/>
+        <Label x:Name="label2" Grid.ColumnSpan="2" Content="Settings" HorizontalAlignment="Left" Margin="22,319,0,0" VerticalAlignment="Top" />
+        <Label x:Name="labelBindPath" Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top" Width="250"/>
+
+    </Grid>
+</Window>
