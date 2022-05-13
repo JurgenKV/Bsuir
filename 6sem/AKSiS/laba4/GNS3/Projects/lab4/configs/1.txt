@@ -1,0 +1,11 @@
+!
+interface LoopBack0
+ no ip address
+ ipv6 address 2A02:2208:0:1::1/64
+!
+interface FastEthernet0
+ no ip address
+ speed auto
+ ipv6 address autoconfig
+ ipv6 enable
+!

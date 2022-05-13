@@ -1,0 +1,15 @@
+!
+ipv6 unicast-routing
+!
+!
+!
+!
+
+interface FastEthernet0
+ no ip address
+ speed auto
+ ipv6 address FD3E:2E60:E7A3:3::1/64
+ ipv6 address FE80::1 link-local
+!
+!
+ipv6 route ::/0 FastEthernet0 FE80::2
