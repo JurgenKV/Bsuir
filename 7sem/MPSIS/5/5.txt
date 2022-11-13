@@ -1,0 +1,123 @@
+#include <msp430.h> #include <stdint.h>
+/* Функция для взаимодействия с GPIO */
+
+#define GPIO_DIR_OUTPUT(...) GPIO_DIR_OUTPUT_SUB(__VA_ARGS__) #define GPIO_DIR_OUTPUT_SUB(port, pin) (P##port##DIR |= (1
+<< (pin)))
+
+#define GPIO_DIR_INPUT(...) GPIO_DIR_INPUT_SUB(__VA_ARGS__)
+#define GPIO_DIR_INPUT_SUB(port, pin) (P##port##DIR &= ~(1 << (pin)))
+
+
+#define GPIO_PULLUP(...) GPIO_PULLUP_SUB(__VA_ARGS__)
+#define GPIO_PULLUP_SUB(port, pin) P##port##REN |= (1 << (pin)); \ P##port##OUT |= (1 << (pin))
+#define GPIO_PULLDOWN(...) GPIO_PULLDOWN_SUB(__VA_ARGS__)
+#define GPIO_PULLDOWN_SUB(port, pin) P##port##REN |= (1 << (pin)); \ P##port##OUT &= ~(1 << (pin))
+
+#define GPIO_NOPULL(...) GPIO_NOPULL_SUB(__VA_ARGS__)
+#define GPIO_NOPULL_SUB(port, pin) (P##port##REN &= ~(1 << (pin)))
+
+#define GPIO_READ_PIN(...) GPIO_READ_PIN_SUB(__VA_ARGS__)
+#define GPIO_READ_PIN_SUB(port, pin) ((P##port##IN & (1 << (pin))) ? 1 : 0)
+
+#define GPIO_WRITE_PIN(...) GPIO_WRITE_PIN_SUB(__VA_ARGS__)
+#define GPIO_WRITE_PIN_SUB(port, pin, value) (P##port##OUT = (P##port##OUT & ~(1 << (pin))) | (value << (pin)))
+
+#define GPIO_TOGGLE_PIN(...) GPIO_TOGGLE_PIN_SUB(__VA_ARGS__)
+#define GPIO_TOGGLE_PIN_SUB(port, pin) (P##port##OUT ^= (1 << (pin)))
+
+#define GPIO_TRIG_EDGE_FALLING(...) GPIO_TRIG_EDGE_FALLING_SUB(__VA_ARGS__) #define GPIO_TRIG_EDGE_FALLING_SUB(port, pin
+) (P##port##IES |= (1 << (pin)))
+
+#define GPIO_TRIG_EDGE_RISING(...) GPIO_TRIG_EDGE_RISING_SUB(__VA_ARGS__) #define GPIO_TRIG_EDGE_RISING_SUB(port, pin) (
+P##port##IES &= ~(1 << (pin)))
+
+#define GPIO_INTERRUPT_ENABLE(...) GPIO_INTERRUPT_ENABLE_SUB(__VA_ARGS__) #define GPIO_INTERRUPT_ENABLE_SUB(port, pin) P
+##port##IFG &= ~(1 << (pin)); \
+P##port##IE |= (1 << (pin))
+
+#define GPIO_INTERRUPT_DISABLE(...) GPIO_INTERRUPT_DISABLE_SUB(__VA_ARGS__) #define GPIO_INTERRUPT_DISABLE_SUB(port, pin
+) (P##port##IE &= ~(1 << (pin)))
+
+#define GPIO_PERIPHERAL(...) GPIO_PERIPHERAL_SUB(__VA_ARGS__)
+#define GPIO_PERIPHERAL_SUB(port, pin) (P##port##SEL |= (1 << (pin)))
+
+#define GPIO_CLEAR_IT_FLAG(...) GPIO_CLEAR_IT_FLAG_SUB(__VA_ARGS__) #define GPIO_CLEAR_IT_FLAG_SUB(port, pin) (P##port##
+IFG &= ~(1 << (pin)))
+
+/********************************************************************/
+
+#define LED_ON 1 #define LED_OFF 0
+
+/* Порты и пины используемых выводов */
+
+#define LED1_PORT 1 #define LED1_PIN 0
+
+#define LED3_PORT 8 #define LED3_PIN 2
+
+#define POT_VCC_PORT 8 #define POT_VCC_PIN 0
+
+#define POT_OUT_PORT 6 #define POT_OUT_PIN 5
+
+// Значение потенциометра volatile uint16_t temp_adc = 0;
+// Значение температурного датчика volatile uint16_t pot_adc = 0;
+
+int main(void)
+
+
+{
+// Остановка сторожевого таймера WDTCTL = WDTPW + WDTHOLD;
+
+// Подаем напряжение на ногу потенциометра GPIO_DIR_OUTPUT(POT_VCC_PORT, POT_VCC_PIN); GPIO_WRITE_PIN(POT_VCC_PORT, POT_VCC_PIN, 1);
+
+    GPIO_DIR_OUTPUT(LED3_PORT, LED3_PIN);
+    GPIO_WRITE_PIN(LED3_PORT, LED3_PIN, LED_OFF);
+
+    GPIO_DIR_OUTPUT(LED1_PORT, LED1_PIN);
+    GPIO_WRITE_PIN(LED1_PORT, LED1_PIN, LED_OFF);
+
+// Включаем функцию АЦП на ножке msp430 GPIO_PERIPHERAL(POT_OUT_PORT, POT_OUT_PIN);
+
+// Дает возможность управлять опорным напряжениям с помощью регистров АЦП REFCTL0 &= ~REFMSTR;
+
+// время выборки АЦП = 256 ADC12CLK циклов // включение опорного генератора
+// включение АЦП, непрерывный режим измерения
+    ADC12CTL0 = ADC12SHT0_8 + ADC12REFON + ADC12ON + ADC12MSC;
+
+// повторно-многоканальный, импульсный режим, ADC12CTL1 = ADC12SHP + ADC12CONSEQ_3;
+// 10 Канал - температурный сенсор, опорные VCC и GND ADC12MCTL0 = ADC12SREF_0 + ADC12INCH_10;
+// 5 Канал - потенциометр, последний канал, опорные VCC и GND ADC12MCTL1 = ADC12SREF_0 + ADC12INCH_5 + ADC12EOS;
+
+// Разрешение прерываний для ADCMEM0, ADCMEM1 ADC12IE = 0x003;
+
+// Разрешение измерения ADC12CTL0 |= ADC12ENC; // Начало измерения ADC12CTL0 |= ADC12SC; while(1)
+    {
+// Вход в режим LPMO с разрешением прерываний __bis_SR_register(LPM0_bits + GIE);
+        if (temp_adc > pot_adc)
+        {
+            GPIO_WRITE_PIN(LED3_PORT, LED3_PIN, LED_OFF);
+            GPIO_WRITE_PIN(LED1_PORT, LED1_PIN, LED_ON);
+        }
+        else
+        {
+            GPIO_WRITE_PIN(LED3_PORT, LED3_PIN, LED_ON);
+            GPIO_WRITE_PIN(LED1_PORT, LED1_PIN, LED_OFF);
+        }
+    }
+}
+
+#pragma vector=ADC12_VECTOR __interrupt void ADC12ISR (void) {
+
+switch (__even_in_range(ADC12IV, 34))
+{
+// Источник прерывания ADC12IFG0 case 6:
+
+        temp_adc = ADC12MEM0;
+        break;
+        // Источник прерывания ADC12IFG1 case 8:
+        pot_adc = ADC12MEM1;
+        break;
+    default: break;
+}
+// Выход из LPM0 __bic_SR_register_on_exit(LPM0_bits);
+
+}

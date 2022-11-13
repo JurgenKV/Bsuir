@@ -1,0 +1,27 @@
+* Television Maintenance Man Model *
+*****************************************************************
+* Repair of rented sets, one each week *
+* Time unit is one minute *
+*****************************************************************
+        GENERATE  100,20 ;Overhaul of a rented set
+        QUEUE     Overhaul     ;Queue for service
+        QUEUE     Alljobs      ;Collect global statistics
+
+        SEIZE     Maintenance1  ;Obtain TV repairman
+        DEPART    Overhaul     ;Leave queue for man
+        DEPART    Alljobs      ;Collect global statistics
+        ADVANCE   50,30       ;Complete job 10+/-1 hours
+        RELEASE   Maintenance1  ;Free repairman
+        TERMINATE 1             ;Remove one Transaction
+
+*****************************************************************
+* On the spot repairs
+        GENERATE  200,40    ;On-the-spot repairs
+        QUEUE     Spot         ;Queue for spot repairs
+        QUEUE     Alljobs      ;Collect global statistics
+        PREEMPT   Maintenance2,PR ;Get the TV repairman
+        DEPART    Spot         ;Depart the ‘spot’ queue
+        DEPART    Alljobs      ;Collect global statistics
+        ADVANCE   50,30        ;Time for tuning/fuse/fault
+        RETURN    Maintenance2  ;Free maintenance man
+        TERMINATE
