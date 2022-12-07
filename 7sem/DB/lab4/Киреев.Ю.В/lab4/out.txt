@@ -1,0 +1,118 @@
+********* ЗАПРОС *********
+SELECT "Login", "Age", "FullName" FROM public."EMPLOYEE" WHERE CAST("Age" as Integer) < 30;
+**************************
+
+ Login  | Age |     FullName
+--------+-----+------------------
+ Login4 | 23  | Роман Запольский
+ Login5 | 18  | Евгений Шпак
+ Login3 | 22  | Валерий Жмах
+ Login2 | 29  | Александр Шляпик
+
+
+********* ЗАПРОС *********
+SELECT "Name", "Salary" FROM public."POSITION" WHERE "Salary" BETWEEN 2000 AND 3500;
+**************************
+
+   Name   |  Salary
+----------+----------
+ Инженер  |   2100
+ Директор |   3000
+
+
+********* ЗАПРОС *********
+SELECT "Place", "Row", "Price" FROM public."TICKET" WHERE "Price" = 4;
+**************************
+
+ Place | Row | Price
+-------+-----+-------
+ 20    | 2   |     4
+ 50    | 5   |     4
+
+
+********* ЗАПРОС *********
+SELECT "Name" FROM public."HALL" ORDER BY "Name" DESC;
+**************************
+
+ Name
+-------
+ Зал 5
+ Зал 4
+ Зал 3
+ Зал 2
+ Зал 1
+
+
+********* ЗАПРОС *********
+SELECT "Time", "AmountPlaces" FROM public."SESSION" ORDER BY "Time" ASC;
+**************************
+
+    Time     | AmountPlaces
+-------------+--------------
+ 10:30:00+03 |          120
+ 13:00:00+03 |          120
+ 15:00:00+03 |          120
+ 18:00:00+03 |          120
+ 21:00:00+03 |          120
+
+
+********* ЗАПРОС *********
+SELECT "Name", "Description" FROM public."FILM" WHERE "Description" IN ('Классика');
+**************************
+
+  Name  | Description
+--------+-------------
+ Брат   | Классика
+ Брат 2 | Классика
+
+
+********* ЗАПРОС *********
+SELECT "Number", "Count" FROM public."HALLROW" WHERE "Count" = 10;
+**************************
+
+ Number | Count
+--------+-------
+ 1      |    10
+ 2      |    10
+ 3      |    10
+ 4      |    10
+ 5      |    10
+ 6      |    10
+ 7      |    10
+ 8      |    10
+ 9      |    10
+ 10     |    10
+ 11     |    10
+ 12     |    10
+
+
+********* ЗАПРОС *********
+SELECT "Place", "Row" FROM public."OCCUPANCY";
+**************************
+
+ Place | Row
+-------+-----
+ 7     | 7
+ 8     | 8
+ 9     | 9
+ 10    | 10
+ 1     | 1
+ 2     | 2
+ 3     | 3
+ 4     | 4
+ 5     | 5
+ 6     | 6
+ 11    | 11
+ 12    | 12
+
+
+********* ЗАПРОС *********
+SELECT "Login", "Age", "FullName" FROM public."EMPLOYEE" WHERE ("FullName" like '%ах' OR "FullName" like '%ик');
+**************************
+
+ Login  | Age |     FullName
+--------+-----+------------------
+ Login3 | 22  | Валерий Жмах
+ Login2 | 29  | Александр Шляпик
+ Login6 | 40  | Николай Ликшик
+
