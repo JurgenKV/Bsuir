@@ -1,0 +1,8 @@
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\bin\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.deps.json
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\bin\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.dll
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\bin\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.pdb
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\obj\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.fsproj.AssemblyReference.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\obj\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.AssemblyInfoInputs.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\obj\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.AssemblyInfo.fs
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\obj\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.dll
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared.FsharpExtensions\obj\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.pdb

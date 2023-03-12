@@ -1,0 +1,13 @@
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\bin\Debug\netcoreapp3.1\Matrices.Shared.deps.json
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\bin\Debug\netcoreapp3.1\Matrices.Shared.dll
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\bin\Debug\netcoreapp3.1\Matrices.Shared.pdb
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\bin\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.dll
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\bin\Debug\netcoreapp3.1\Matrices.Shared.FsharpExtensions.pdb
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.csproj.AssemblyReference.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.AssemblyInfoInputs.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.AssemblyInfo.cs
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.csproj.CoreCompileInputs.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.csproj.CopyComplete
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.dll
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Shared\obj\Debug\netcoreapp3.1\Matrices.Shared.pdb

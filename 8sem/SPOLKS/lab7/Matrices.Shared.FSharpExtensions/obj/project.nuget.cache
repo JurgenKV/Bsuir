@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vHuYnTX9Y5Bdshjac3EvtaPDnJZpNUCg3XSVyr7EX2wPV7NBGTCXZhlhD4NxdxuAEDUhrb+aHm6JBH5ZBAJOFw==",
+  "success": true,
+  "projectFilePath": "D:\\Downloads\\MPI_Labs-master\\MPI_Labs-master\\Spolks.Mpi\\Matrices.Shared.FsharpExtensions\\Matrices.Shared.FsharpExtensions.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
