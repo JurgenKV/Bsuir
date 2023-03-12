@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "o8MDEiTz2r8L/Z7KA55U3nBkduYQ6eG80UQ8vCfUbwlmtZtB5IToOIjk3fTJA9nt6AM0lrFv/h6+lQmBHNUKqg==",
+  "success": true,
+  "projectFilePath": "D:\\Downloads\\MPI_Labs-master\\MPI_Labs-master\\Spolks.Mpi\\Matrices.Mpi8\\Matrices.Mpi8.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\morelinq\\3.3.2\\morelinq.3.3.2.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\mpi.net\\1.4.0\\mpi.net.1.4.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\JurgenKV\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.23\\microsoft.netcore.app.host.win-x64.3.1.23.nupkg.sha512"
+  ],
+  "logs": []
+}

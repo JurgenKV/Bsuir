@@ -1,0 +1,5 @@
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Mpi8\obj\Debug\netcoreapp3.1\Matrices.Mpi8.csproj.AssemblyReference.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Mpi8\obj\Debug\netcoreapp3.1\Matrices.Mpi8.GeneratedMSBuildEditorConfig.editorconfig
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Mpi8\obj\Debug\netcoreapp3.1\Matrices.Mpi8.AssemblyInfoInputs.cache
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Mpi8\obj\Debug\netcoreapp3.1\Matrices.Mpi8.AssemblyInfo.cs
+D:\Downloads\MPI_Labs-master\MPI_Labs-master\Spolks.Mpi\Matrices.Mpi8\obj\Debug\netcoreapp3.1\Matrices.Mpi8.csproj.CoreCompileInputs.cache
