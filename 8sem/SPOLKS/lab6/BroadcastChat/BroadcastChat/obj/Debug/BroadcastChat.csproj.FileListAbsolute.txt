@@ -1,0 +1,7 @@
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\bin\Debug\BroadcastChat.exe.config
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\bin\Debug\BroadcastChat.exe
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\bin\Debug\BroadcastChat.pdb
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\obj\Debug\BroadcastChat.csproj.AssemblyReference.cache
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\obj\Debug\BroadcastChat.csproj.CoreCompileInputs.cache
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\obj\Debug\BroadcastChat.exe
+D:\Downloads\SPOLKS-master\SPOLKS-master\BroadcastChat\BroadcastChat\obj\Debug\BroadcastChat.pdb

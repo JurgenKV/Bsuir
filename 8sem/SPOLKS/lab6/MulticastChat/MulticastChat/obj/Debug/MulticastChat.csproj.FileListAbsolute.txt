@@ -1,0 +1,7 @@
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\bin\Debug\MulticastChat.exe.config
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\bin\Debug\MulticastChat.exe
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\bin\Debug\MulticastChat.pdb
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\obj\Debug\MulticastChat.csproj.AssemblyReference.cache
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\obj\Debug\MulticastChat.csproj.CoreCompileInputs.cache
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\obj\Debug\MulticastChat.exe
+d:\Downloads\SPOLKS-master\SPOLKS-master\MulticastChat\MulticastChat\obj\Debug\MulticastChat.pdb
